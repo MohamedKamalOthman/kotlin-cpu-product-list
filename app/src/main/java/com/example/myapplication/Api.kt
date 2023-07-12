@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.media.Rating
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Retrofit
@@ -23,7 +24,7 @@ interface ProductApiService {
  * @param image image of the product
  * @param description description of the product
  */
-data class Product(val name: String, val image: String, val description: String)
+data class Product(val name: String, val image: String, val description: String, val rating: String, val price: String)
 
 /**
  * Object for product api
@@ -32,7 +33,7 @@ data class Product(val name: String, val image: String, val description: String)
  */
 object ProductsApi {
     // TODO: Replace with your own IP address
-    private val BASE_URL = "https://71e0-41-33-183-2.eu.ngrok.io/"
+    private val BASE_URL = "https://8cb0-2a09-bac5-30cc-16a0-00-241-40.ngrok.io/"
 
     private val moshi = Moshi.Builder()
         .add(KotlinJsonAdapterFactory())

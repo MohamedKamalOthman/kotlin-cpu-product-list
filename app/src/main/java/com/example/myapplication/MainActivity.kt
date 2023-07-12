@@ -1,6 +1,6 @@
 package com.example.myapplication
 
-import android.content.Context
+import android.content.Intent
 import android.content.res.Resources
 import android.os.Bundle
 import android.util.Log
@@ -10,6 +10,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.ComponentActivity
+import androidx.cardview.widget.CardView
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.coroutines.CoroutineScope
@@ -38,6 +40,7 @@ class MyAdapter(
         val titleView = row.findViewById<TextView>(R.id.title)
         val imageView = row.findViewById<ImageView>(R.id.src)
         val descriptionView = row.findViewById<TextView>(R.id.description)
+        val cardView = row.findViewById<CardView>(R.id.card_view)
     }
 
     /**
@@ -72,6 +75,16 @@ class MyAdapter(
         )
         holder.imageView.setImageResource(res)
         holder.descriptionView.text = data[position].description
+        // start a new activity with item data on it when clicked
+        holder.cardView.setOnClickListener {
+            val myIntent = Intent(holder.row.context, ItemActivity::class.java)
+            myIntent.putExtra("name", data.get(position).name);
+            myIntent.putExtra("image", res);
+            myIntent.putExtra("description", data.get(position).description)
+            myIntent.putExtra("rating", data.get(position).rating)
+            myIntent.putExtra("price", data.get(position).price)
+            holder.row.context.startActivity(myIntent)
+        }
     }
 
     /**
@@ -110,7 +123,7 @@ class MainActivity : ComponentActivity() {
             products = ProductsApi.retrofitService.getProducts()
             Log.i("API Call", "Api: $products")
         }
-        
+
         // wait for response
         while (products == null) {
             Thread.sleep(500)
