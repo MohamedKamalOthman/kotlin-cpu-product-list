@@ -21,4 +21,15 @@ Features
 -    The app will display a list of CPU details with images and descriptions.
 -    Tap on a CPU detail to view more details.
 
+# Screenshot
+
+![2023-07-11_12-04](https://github.com/MohamedKamalOthman/kotlin-cpu-product-list/assets/76039756/0eb7a1b7-6851-440c-a97d-fd7a8f2523dc)
+
 # Video
+
+
+
+https://github.com/MohamedKamalOthman/kotlin-cpu-product-list/assets/76039756/2a82552a-b20d-48d4-8db4-f18f566c8d7c
+
+
+
